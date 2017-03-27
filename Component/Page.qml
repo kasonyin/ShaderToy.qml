@@ -1,12 +1,11 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.2
+import QtQuick 2.4
+import QtQuick.Controls 1.3
 
 Rectangle {
     id: page
     color: "transparent"
 
-    width: 640
-    height: 360
+    readonly property ShaderToy toy: loader.item
 
     property alias toySource: loader.source
 
@@ -31,7 +30,7 @@ Rectangle {
         Text {
             id: titleText
             anchors.centerIn: parent
-            text: toy ? toy.title: ""
+            text: page.toy ? page.toy.title: ""
             color: "white"
             font.pointSize: 15
         }
@@ -42,7 +41,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             onClicked: {
                 try {
-                    Qt.openUrlExternally(toy.base);
+                    Qt.openUrlExternally(page.toy.base);
                 } catch(e) {
                     console.log(e);
                 }
@@ -52,14 +51,10 @@ Rectangle {
 
     Loader {
         id: loader
-
         anchors.top: header.bottom
+        anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        anchors.bottom: parent.bottom
     }
-
-    property ShaderToy toy: loader.item
-
 }
 

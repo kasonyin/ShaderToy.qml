@@ -1,17 +1,12 @@
-import QtQuick.Controls 1.4
-import QtQuick 2.5
-import QtQuick.Layouts 1.1
+import QtQuick.Controls 1.3
+import QtQuick 2.4
 
-ApplicationWindow {
-    id: window
+Rectangle {
 
     width: 640
-    height: 400
-
+    height: 360
     color: "black"
-    visible: true
-
-    title: qsTr("ShaderToy.qml@qyvlik")
+    clip: true
 
     MainView {
         anchors.fill: parent
