@@ -1,1 +1,5 @@
-ShaderToy.qml.qmlproject.user
+
+*.qmlproject.user
+*.qmlc
+
+

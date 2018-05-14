@@ -128,11 +128,9 @@ ShaderEffect {
             gl_Position = qt_Matrix * qt_Vertex;
         }"
 
-    readonly property string
-    forwordPixelShaderString:
-        "
+    readonly property string someDefine: Qt.platform.os === 'osx' ? "":
+                                                                    "
         #ifndef GL_ES
-
         #extension GL_EXT_shader_texture_lod : enable
         #extension GL_OES_standard_derivatives : enable
 
@@ -144,8 +142,11 @@ ShaderEffect {
 
         #ifdef GL_ES
         precision mediump float;
-        #endif
+        #endif"
 
+    readonly property string
+    forwordPixelShaderString:  someDefine +
+                               "
         uniform lowp float qt_Opacity;
         varying highp vec2 qt_TexCoord0;
 

@@ -11,6 +11,7 @@ ShaderToy demo by QML.
 一些 `QML` 中 `GLSL` 的封装，需要考虑 `GLSL ES` 接口。
 
 ```
+// if not mac
 #ifndef GL_ES
 
 #extension GL_EXT_shader_texture_lod : enable
@@ -25,6 +26,7 @@ precision mediump sampler2D;
 #ifdef GL_ES
 precision mediump float;
 #endif
+// end if not mac
 
 uniform lowp float qt_Opacity;
 varying highp vec2 qt_TexCoord0;
